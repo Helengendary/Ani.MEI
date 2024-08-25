@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+
+    <title>corsultorIA - Página Inicial</title>
+</head>
+
+<body>
+  <header>
+    <a id="inicial" href="inicial.html"><h5>consultorIA</h5></a>
+    <nav>
+      <a id="selected">Gráficos</a>
+      <a href="chat.html">Chat</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="scatter-plot" id="scatterPlot"></div>
+
+    <script>
+        const scatterPlot = document.getElementById('scatterPlot');
+
+      // Função para gerar valores aleatórios
+      function getRandomInt(max) {
+          return Math.floor(Math.random() * max);
+      }
+
+      // Função para gerar uma informação aleatória
+      function generateRandomInfo() {
+          const infos = [
+              "Ponto A: 23, 45",
+              "Ponto B: 67, 89",
+              "Ponto C: 12, 34",
+              "Ponto D: 56, 78",
+              "Ponto E: 90, 12",
+              "Ponto F: 45, 67",
+              "Ponto G: 78, 90",
+              "Ponto H: 34, 56",
+              "Ponto I: 89, 23",
+              "Ponto J: 13, 49"
+          ];
+          return infos[Math.floor(Math.random() * infos.length)];
+      }
+
+      // Gerar 10 pontos aleatórios com informações
+      for (let i = 0; i < 10; i++) {
+          const point = document.createElement('div');
+          point.className = 'point';
+          point.style.top = getRandomInt(90) + '%';
+          point.style.left = getRandomInt(90) + '%';
+
+          // Criar elemento para exibir as informações
+          const pointInfo = document.createElement('div');
+          pointInfo.className = 'point-info';
+          pointInfo.innerText = generateRandomInfo();
+
+          // Adicionar a informação como filho do ponto
+          point.appendChild(pointInfo);
+          scatterPlot.appendChild(point);
+      }
+
+    </script>
+  </main>
+</body>
+
+</html>
