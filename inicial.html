@@ -5,64 +5,64 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
 
-    <title>corsultorIA - Página Inicial</title>
+    <title>Página Inicial</title>
 </head>
 
-<body>
+<body style="background-color: white;">
   <header>
-    <a id="inicial" href="inicial.html"><h5>consultorIA</h5></a>
+    <a id="inicial" href="inicial.html"><img src="logo.png" alt="Logo MeiGuia"></a>
     <nav>
-      <a id="selected">Gráficos</a>
+      <a id="selected">DashBoard</a>
       <a href="chat.html">Chat</a>
+      <a href="educacao.html">Ajuda</a>
     </nav>
   </header>
 
   <main>
-    <div class="scatter-plot" id="scatterPlot"></div>
+    <img id="grafico" src="grafico.png" alt="Grafico">
 
-    <script>
-        const scatterPlot = document.getElementById('scatterPlot');
-
-      // Função para gerar valores aleatórios
-      function getRandomInt(max) {
-          return Math.floor(Math.random() * max);
-      }
-
-      // Função para gerar uma informação aleatória
-      function generateRandomInfo() {
-          const infos = [
-              "Ponto A: 23, 45",
-              "Ponto B: 67, 89",
-              "Ponto C: 12, 34",
-              "Ponto D: 56, 78",
-              "Ponto E: 90, 12",
-              "Ponto F: 45, 67",
-              "Ponto G: 78, 90",
-              "Ponto H: 34, 56",
-              "Ponto I: 89, 23",
-              "Ponto J: 13, 49"
-          ];
-          return infos[Math.floor(Math.random() * infos.length)];
-      }
-
-      // Gerar 10 pontos aleatórios com informações
-      for (let i = 0; i < 10; i++) {
-          const point = document.createElement('div');
-          point.className = 'point';
-          point.style.top = getRandomInt(90) + '%';
-          point.style.left = getRandomInt(90) + '%';
-
-          // Criar elemento para exibir as informações
-          const pointInfo = document.createElement('div');
-          pointInfo.className = 'point-info';
-          pointInfo.innerText = generateRandomInfo();
-
-          // Adicionar a informação como filho do ponto
-          point.appendChild(pointInfo);
-          scatterPlot.appendChild(point);
-      }
-
-    </script>
+    <table>
+      <thead>
+        <td>Dia</td>
+        <td>Vendas Feitas</td>
+        <td>Notas Fiscais Emitidas</td>
+      </thead>
+      <tr>
+        <td>01/ago</td>
+        <td>4</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>02/ago</td>
+        <td>2</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>03/ago</td>
+        <td>4</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>04/ago</td>
+        <td>1</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>05/ago</td>
+        <td>9</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>06/ago</td>
+        <td>6</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>07/ago</td>
+        <td>3</td>
+        <td>3</td>
+      </tr>
+    </table>
   </main>
 </body>
 

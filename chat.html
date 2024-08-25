@@ -4,39 +4,160 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
-    <link rel="s" href="">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <title>corsultorIA - Página Inicial</title>
+    <title>Página Inicial</title>
 </head>
 
 <body>
   <header>
-    <a id="inicial" href="inicial.html"><h5>consultorIA</h5></a>
+    <a id="inicial"><img src="logo.png" alt="Logo MeiGuia"></a>
     <nav>
-      <a href="inicial.html">Gráficos</a>
+      <a href="inicial.html">DashBoard</a>
       <a href="chat.html" id="selected">Chat</a>
+      <a href="educacao.html" >Ajuda</a>
     </nav>
   </header>
 
-  <h5 class="nome"  id="ia">IA</h5>
-  <h5 class="nome" id="cliente">CLIENTE</h5>
-  <p id="text"></p>
-  <p id="resposta"></p>
-
+  <div id="conversa">
+    <p class="hora">08:00</p>
+    
+    <h5 class="nome">ANA</h5>
+    <p class="fala-ia">Bom dia! Já começou o dia hoje</p>
+    
+    <h5 class="nome" id="cliente">Marisa</h5>
+    <p class="fala-cli">Sim</p>
+    
+    <h5 class="nome">ANA</h5>
+    <p class="fala-ia">Ah legal! Já teve alguma venda?</p>
+    
+    <h5 class="nome"  id="cliente">Marisa</h5>
+    <audio src="" id="audio"></audio>
+    <button class="bi-play-circle-fill fala-cli" id="play-pause" onclick="Pause(1)"></button>
+    
+    <h5 class="nome">ANA</h5>
+    <p class="fala-ia">Que bom! Precisa emitir nota?</p>
+    
+    <h5 class="nome" id="cliente">Marisa</h5>
+    <p class="fala-cli">Sim</p>
+    
+    <h5 class="nome">ANA</h5>
+    <p class="fala-ia">Okay, para emitir a nota você tem que fazer assim.</p>
+    <p class="fala-ia"> <a  style="padding: 0px;" href="educacao.html#nota-fiscal">Emitir minha nota</a></p>
+    
+    <h5 class="nome">ANA</h5>
+    <p class="fala-ia">Vai fazer uma pausa na hora do almoço?</p>
+    
+    <h5 class="nome" id="cliente">Marisa</h5>
+    <p class="fala-cli">Sim</p>
+    
+    <p class="hora">15:00</p>
+    <h5 class="nome">ANA</h5>
+    <p class="fala-ia">Boa tarde, Marisa! Voltou do almoço?</p>
+    
+    <h5 class="nome" id="cliente">Marisa</h5>
+    <p class="fala-cli">Voltei sim</p>
+    
+    <h5 class="nome">ANA</h5>
+    <p class="fala-ia">Que bom! Teve mais alguma venda até agora?</p>
+    
+    <h5 class="nome"  id="cliente">Marisa</h5>
+    <audio src="" id="audio"></audio>
+    <button class="bi-play-circle-fill fala-cli" id="play-pause" onclick="Pause(2)"></button>
+    
+    <h5 class="nome">ANA</h5>
+    <p class="fala-ia">Nossa, que venda boa! Salvou o contato dele para mandar mensagem depois?</p>
+    
+    <h5 class="nome" id="cliente">Marisa</h5>
+    <p class="fala-cli">Esqueci, não salvei</p>
+    
+    <h5 class="nome">ANA</h5>
+    <p class="fala-ia">Okay. Então, salva comigo agora.</p>
+    <p class="fala-ia"><a href="https://contacts.google.com/">Google Contatos</a></p>
+    
+    <h5 class="nome" id="cliente">Marisa</h5>
+    <p class="fala-cli">👍</p>
+    
+    <h5 class="nome">ANA</h5>
+    <p class="fala-ia">Beleza, amanhã mandamos mensagem para ele denovo.</p>
+    
+    <p class="hora">18:00</p>
+    
+    <h5 class="nome">ANA</h5>
+    <p class="fala-ia">Boa noite, Marisa. Como foi seu dia hoje?</p>
+        
+    <h5 class="nome"  id="cliente">Marisa</h5>
+    <audio src="" id="audio"></audio>
+    <button class="bi-play-circle-fill fala-cli" id="play-pause" onclick="Pause(3)"></button>
+    
+    <h5 class="nome">ANA</h5>
+    <p class="fala-ia">Nossa seu dia foi bem corrido mesmo. Conseguiu fazer mais alguma venda?</p>
+    
+    <h5 class="nome"  id="cliente">Marisa</h5>
+    <audio src="" id="audio"></audio>
+    <button class="bi-play-circle-fill fala-cli" id="play-pause" onclick="Pause(4)"></button>
+    
+    <h5 class="nome">ANA</h5>
+    <p class="fala-ia">Ai que bom, mais uma pessoa para mandarmos uma mensagem amanhã. Desse jeito o seu negócio vai crescer rapidinho.</p>
+    <p class="fala-ia">Esse vídeo para te ajudar amanhã nas conversas de amanhã.</p>
+    <p class="fala-ia"><a class="fala-ia" href="educacao.html#encantamento">Estratégia de encantamento do cliente</a></p>
+  </div>
+  
   <div class="conv">
-      <input type="text" id="chat" placeholder="Digite aqui" value=""></input><button onclick="postar()" type="submit" id="msg">^</button>
+    <input type="text" id="chat" placeholder="Digite aqui" value=""></input><button onclick="postar()" type="submit" id="msg">ʌ</button>
   </div>
 </body>
 
 <script>
-    const texto = document.getElementById("text");
-    const ia = document.getElementById("resposta");
+    const chat = document.getElementById("conversa");
     const pala = document.getElementById("chat");
-
+    let audio = document.getElementById("audio");
+    let caminho;
+    let play = false;
+    
     function postar() {
+      
+      let tituloCliente = document.createElement("h5");
+      tituloCliente.className = "nome";
+      tituloCliente.setAttribute("id", "cliente");
+      tituloCliente.textContent = "Marisa";
+      
+      var newChat = document.createElement("p");
+      newChat.className = "fala-cli";
+      newChat.textContent = pala.value;
+      
+      let tituloIA = document.createElement("h5");
+      tituloIA.className = "nome";
+      tituloIA.textContent = "ANA";   
+      
+      
+      var newChatia = document.createElement("p");
+      newChatia.className = "fala-ia";
+      newChatia.textContent = "Desculpe! No momento não estou funcionandoo";
+      
+      chat.appendChild(tituloCliente);
+      chat.appendChild(newChat);
+      chat.appendChild(tituloIA);
+      chat.appendChild(newChatia);
+      pala.value = "";
+      
+    }
+    
+    function Pause(atual){
 
-        texto.innerText = pala.value;
-        ia.innerText = "Não funciona no momento";
+      caminho = "venda-" + atual + ".opus";
+      audio.setAttribute("src", caminho)
+
+      if (play) {
+          audio.pause();
+          play = false;
+          bplay.setAttribute("class", "bi-play-circle-fill");
+      } else {
+          audio.play();
+          play = true;
+          bplay.setAttribute("class", "bi-pause-circle-fill");
+      }
+
     }
 </script>
 </html>
